@@ -1,3 +1,5 @@
+---
+
 - name: Change hostname and TZ
   hosts: all
   gather_facts: false
