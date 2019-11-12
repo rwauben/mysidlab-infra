@@ -1,0 +1,21 @@
+- name: Change hostname and TZ
+  hosts: all
+  gather_facts: false
+  become: true
+  vars:
+    hostname: raymond-cateyes
+    tz: Antarctica/McMurdo
+  
+  tasks:
+    - name: Set timezone to "{{ tz }}"
+      timezone:
+        name: "{{ tz }}"
+    - name: Display the new timezone
+      shell: date +%Z
+      
+    - name: Set hostname to "{{ hostname }}"
+      hostname:
+        name: "{{ hostname }}"
+    
+    - name: Dump host facts
+      setup:
